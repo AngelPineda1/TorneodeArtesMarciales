@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="TorneodeArtesMarciales.Views.VerArteMarcial"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TorneodeArtesMarciales.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="580" d:DesignWidth="400" Background="WhiteSmoke">
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.03*"></RowDefinition>
+            <RowDefinition Height="0.20*"></RowDefinition>
+            <RowDefinition Height="0.09*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label FontSize="30" HorizontalContentAlignment="Center" Width="400"  Foreground="Black" FontWeight="Bold">Arte Marcial</Label>
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2" Margin="10" CornerRadius="10">
+            <StackPanel Margin="10,0,10,0" VerticalAlignment="Center" Grid.Row="1">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock" x:Key="estilos">
+                        <Setter Property="FontSize" Value="20"></Setter>
+
+                        <Setter Property="Foreground" Value="Black"></Setter>
+                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                    </Style>
+                </StackPanel.Resources>
+
+                <TextBlock Style="{StaticResource estilos}">Nombre:</TextBlock>
+                
+                <TextBlock Text="{Binding artesmarciales.Nombre}" Margin="3" FontSize="25" Foreground="Black"></TextBlock>
+                <TextBlock Style="{StaticResource estilos}" >Lugar de Origen:</TextBlock>
+                <TextBlock Text="{Binding artesmarciales.LugarOrigen}"  Margin="3" FontSize="25" Foreground="Black"></TextBlock>
+                <TextBlock Style="{StaticResource estilos}" >Año de Origen:</TextBlock>
+                <TextBlock Text="{Binding artesmarciales.AñoOrigen}" Margin="3" FontSize="25" Foreground="Black"></TextBlock>
+                <TextBlock Style="{StaticResource estilos}">Valores:</TextBlock>
+                <TextBlock Text="{Binding artesmarciales.Valores}" Margin="3" FontSize="25" Foreground="Black"></TextBlock>
+                <TextBlock Style="{StaticResource estilos}">Variantes:</TextBlock>
+                <TextBlock Text="{Binding artesmarciales.Variantes}" Margin="3" FontSize="25" Foreground="Black"></TextBlock>
+
+
+            </StackPanel>
+        </Border>
+        <Path Grid.Row="2" Data="M0,90 400,90 400,120 240,120 270,150 250,160 220,130 220,170 200,170 200,120 0,120Z" Fill="Orange" Margin="0,-25,0,0"></Path>
+        <WrapPanel HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Top">
+            <Button Height="50" Width="50" Background="Transparent" Command="{Binding RegresarCommand}" BorderThickness="0" Margin="0,-10,0,0">
+                <Image Source="https://cdn-icons-png.flaticon.com/128/7699/7699123.png"  Stretch="Uniform"></Image>
+            </Button>
+        </WrapPanel>
+        
+
+    </Grid>
+</UserControl>

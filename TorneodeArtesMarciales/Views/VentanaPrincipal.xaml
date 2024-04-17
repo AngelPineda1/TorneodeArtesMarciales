@@ -1,0 +1,50 @@
+﻿<Window x:Class="TorneodeArtesMarciales.Views.VentanaPrincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TorneodeArtesMarciales.Views" xmlns:vm="clr-namespace:TorneodeArtesMarciales.ViewModels"
+        mc:Ignorable="d"
+        Title="" Height="590" Width="400">
+    <Grid>
+        <Grid.DataContext>
+            <vm:TorneoViewModel></vm:TorneoViewModel>
+        </Grid.DataContext>
+        <StackPanel>
+            <Button ></Button>
+        </StackPanel>
+        <ContentControl>
+            <ContentControl.Resources>
+                <local:AgregaView x:Key="Agregar"></local:AgregaView>
+                <local:EditarView x:Key="VerEditar"></local:EditarView>
+                <local:EliminarView x:Key="Eliminar"></local:EliminarView>
+                <local:VerArteMarcial x:Key="Ver"></local:VerArteMarcial>
+                <local:VerArtesMarciales x:Key="VerTodos"></local:VerArtesMarciales>
+            </ContentControl.Resources>
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="ver">
+                            <Setter Property="Content" Value="{StaticResource Ver}"></Setter>
+                        </DataTrigger>
+                       
+                        <DataTrigger Binding="{Binding Vista}" Value="vertodos">
+                            <Setter Property="Content" Value="{StaticResource VerTodos}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="Agregar">
+                            <Setter Property="Content" Value="{StaticResource Agregar}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerEditar">
+                            <Setter Property="Content" Value="{StaticResource VerEditar}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="Eliminar">
+                            <Setter Property="Content" Value="{StaticResource Eliminar}"></Setter>
+                        </DataTrigger>
+                        
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+
+        </ContentControl>
+    </Grid>
+</Window>

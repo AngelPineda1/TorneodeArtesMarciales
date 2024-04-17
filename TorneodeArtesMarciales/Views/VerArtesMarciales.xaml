@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="TorneodeArtesMarciales.Views.VerArtesMarciales"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TorneodeArtesMarciales.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="580" d:DesignWidth="400" Background="White" >
+    
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="https://www.webstickersmuraux.com/fr/img/cobrakai013-png/folder/products-detalle-png/stickers-muraux-arbre-miyagi-do.png" Stretch="Uniform" Opacity="0.5"></ImageBrush>
+            <!--<ImageBrush ImageSource="https://th.bing.com/th/id/R.a2011ab1adc326cfa0ebc57c150551f7?rik=J%2f6T%2fN5DUFp4wgpid=ImgRawr=0" Stretch="Uniform"></ImageBrush>-->
+        </Grid.Background>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="Transparent"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition Height="0.10*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <WrapPanel HorizontalAlignment="Center">
+            <Button Command="{Binding VerAgregarCommand}" HorizontalContentAlignment="Center" Height="40" Width="40" BorderThickness="0" Margin="0,0,10,0">
+                <Grid>
+                    
+                    <Image Source="https://cdn-icons-png.flaticon.com/128/1237/1237946.png"  Stretch="Uniform" ></Image>
+                </Grid>
+                
+            </Button>
+            <Button Command="{Binding VerEliminarCommand}" HorizontalContentAlignment="Center" Height="40" Width="40" BorderThickness="0" Margin="0,0,10,0">
+                <Grid>
+                    
+                    <Image Source="https://cdn-icons-png.flaticon.com/128/32/32320.png"  Stretch="Uniform" ></Image>
+                </Grid>
+            </Button>
+            <Button Command="{Binding VerEditarCommand}" HorizontalContentAlignment="Center" Height="40" Width="40" BorderThickness="0" Margin="0,0,10,0">
+                <Grid>
+                    
+                    <Image Source="https://cdn-icons-png.flaticon.com/128/598/598234.png"  Stretch="Uniform" ></Image>
+                </Grid>
+            </Button>
+            <Button Command="{Binding VerArteMarcialCommand}" HorizontalContentAlignment="Center" Height="40" Width="40" BorderThickness="0" Margin="0,0,10,0">
+                <Grid>
+                    
+                    <Image Source="https://cdn-icons-png.flaticon.com/128/159/159604.png"  Stretch="Uniform" ></Image>
+                </Grid>
+            </Button>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1">
+            <Label>Filtrar Por Lugar de Origen:</Label>
+            <TextBox Width="150" Name="txtFiltro" Height="30"></TextBox>
+            <Button Command="{Binding ArteMarcialXLugarCommand}" CommandParameter="{Binding ElementName=txtFiltro,Path=Text}" Height="30">
+                <Image Source="https://cdn-icons-png.flaticon.com/128/2609/2609241.png" Stretch="Uniform"></Image></Button>
+        </WrapPanel>
+        <Path Grid.Row="2"  Data="M0,350 400,350 400,380 240,380 270,410 250,420 220,390 220,430 200,430 200,380 0,380 Z" Fill="Black" Margin="0,-15,0,0" Opacity="0.6"></Path>
+        
+        <ListBox Margin="10" Grid.Row="2" ItemsSource="{Binding ListaArtesMarciales}" SelectedItem="{Binding artesmarciales}"  Background="Transparent">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" >
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image Source="https://cdn-icons-png.flaticon.com/128/921/921613.png" Height="20" Width="20" Stretch="Uniform"></Image>
+                        <TextBlock Text="{Binding Nombre}" FontSize="15" Margin="10,0,0,0">
+                        </TextBlock>
+                        <TextBlock  FontSize="15" Margin="10,0,0,0" > Lugar de Origen:
+                        </TextBlock>
+                        <TextBlock Text="{Binding LugarOrigen}" FontSize="15" Margin="10,0,0,0">
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+       
+    </Grid>
+</UserControl>
